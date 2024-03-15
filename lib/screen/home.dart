@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:food/consent/appBar.dart';
 import 'package:food/consent/colors.dart';
+import 'package:food/screen/recipe.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -121,85 +122,94 @@ class _HomeState extends State<Home> {
             sliver: SliverGrid(
                 delegate: SliverChildBuilderDelegate(
                       (context, index){
-                          return Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color.fromARGB(255, 185, 185, 185),
-                                  offset: Offset(1, 1),
-                                  blurRadius: 15,
+                          return GestureDetector(
+                            onTap: (){
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (BuildContext context)=>Recipe(),
                                 ),
-                              ],
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Column(
-                              children: [
-                                SizedBox(height: 10),
-                                Padding(
-                                  padding: const EdgeInsets.only(right: 14),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [Icon(Icons.favorite_border)],
+                              );
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color.fromARGB(255, 185, 185, 185),
+                                    offset: Offset(1, 1),
+                                    blurRadius: 15,
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 20,
-                                      vertical: 15,
-                                  ),
-                                  child: Container(
-                                    height: 120,
-                                    width: 120,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                            'image/${categoryname[indexx]}${index}.jpg',        // hinh anh
-                                        ),
-                                        fit: BoxFit.cover,
-                                      ),
-                                      borderRadius: BorderRadius.circular(20),
+                                ],
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Column(
+                                children: [
+                                  SizedBox(height: 10),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 14),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [Icon(Icons.favorite_border)],
                                     ),
                                   ),
-                                ),
-                                SizedBox(height: 20),
-                                Text(
-                                  food[indexx][index],      // ten
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: font,
-                                    fontFamily: 'ro',
-                                  ),
-                                ),
-                                SizedBox(height: 10),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    Text(
-                                      '100 min',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.grey,
-                                        fontFamily: 'ro',
-                                      ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                        vertical: 15,
                                     ),
-                                    Row(
-
-                                      children: [
-                                        Icon(Icons.star, color: maincolor, size: 15),
-                                        Text(
-                                          '4.2',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            color: Colors.grey,
-                                            fontFamily: 'ro',
+                                    child: Container(
+                                      height: 120,
+                                      width: 120,
+                                      decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                          image: AssetImage(
+                                              'image/${categoryname[indexx]}${index}.jpg',        // hinh anh
                                           ),
+                                          fit: BoxFit.cover,
                                         ),
-                                      ],
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
                                     ),
-                                  ],
-                                ),
-                              ],
+                                  ),
+                                  SizedBox(height: 20),
+                                  Text(
+                                    food[indexx][index],      // ten
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: font,
+                                      fontFamily: 'ro',
+                                    ),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                    children: [
+                                      Text(
+                                        '100 min',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.grey,
+                                          fontFamily: 'ro',
+                                        ),
+                                      ),
+                                      Row(
+
+                                        children: [
+                                          Icon(Icons.star, color: maincolor, size: 15),
+                                          Text(
+                                            '4.2',
+                                            style: TextStyle(
+                                              fontSize: 15,
+                                              color: Colors.grey,
+                                              fontFamily: 'ro',
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           );
                       },
